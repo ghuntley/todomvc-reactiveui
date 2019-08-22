@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="..\Todo\Todo.Shared\Todo.Shared.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI" Version="9.20.1" />
+    <PackageReference Include="ReactiveUI.Testing" Version="9.20.1" />
+    <PackageReference Include="Shouldly" Version="3.0.2" />
+  </ItemGroup>
+
+</Project>

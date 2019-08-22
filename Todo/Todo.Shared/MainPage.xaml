@@ -1,0 +1,46 @@
+<Page
+    x:Class="Todo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Todo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:Todo.Shared.Business.Entities"
+    mc:Ignorable="d">
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<TextBlock Text="todos"/>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="TodoTextBox" PlaceholderText="What needs to be done?" Text="{x:Bind ViewModel.Todo, Mode=TwoWay}"/>
+        </StackPanel>
+
+        <ListView SelectionMode="None" ItemsSource="{x:Bind ViewModel.Todos, Mode=OneWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:TodoItem">
+                    <StackPanel Orientation="Horizontal">
+
+                        <CheckBox IsChecked="{x:Bind IsComplete, Mode=TwoWay}" />
+
+                        <TextBox Text="{x:Bind Description}"/>
+                        
+                        <Button Visibility="Visible"
+                                Background="Transparent"
+                                Margin="100, 0, 0, 0">
+                            <SymbolIcon Symbol="Delete"/>
+                        </Button>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--<TextBlock Text="{x:Bind ViewModel.ItemsLeft, Mode=OneWay, Converter={StaticResource ItemsRemaining}}"/>-->
+
+        <RadioButton Content="All" Command="{x:Bind ViewModel.ShowAll}" IsChecked="True"/>
+        <RadioButton Content="Active" Command="{x:Bind ViewModel.ShowActive}"/>
+        <RadioButton Content="Completed" Command="{x:Bind ViewModel.ShowCompleted}"/>
+
+        <Button Content="Clear completed" Command="{x:Bind ViewModel.ClearCompleted}"/>
+    </StackPanel>
+</Page>

@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="using:Todo.Shared.Converters">
+
+    <converters:ItemsRemainingConverter x:Key="ItemsRemaining"/>
+
+    <converters:BoolToVisibilityConverter x:Key="TrueToVisible"
+                                          IsVisibleIfTrue="True" />
+
+    <converters:BoolToVisibilityConverter x:Key="TrueToCollapsed"
+                                          IsVisibleIfTrue="False" />
+
+    <converters:FromNullableBoolToReverseBoolConverter x:Key="BoolToInvertBool" />
+
+</ResourceDictionary>
